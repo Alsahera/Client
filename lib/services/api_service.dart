@@ -7,7 +7,7 @@ class ApiService {
   // Contoh XAMPP lokal dari HP Android: http://192.168.x.x/lakost/public/api
   // Contoh emulator Android:            http://10.0.2.2:8000/api
   // Contoh artisan serve lokal:         http://127.0.0.1:8000/api
-  static const String baseUrl = 'http://10.0.2.2:8000/api';
+  static const String baseUrl = 'http://127.0.0.1:8000/api';
 
   static String? _token;
 

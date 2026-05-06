@@ -372,7 +372,7 @@ class _BookingCard extends StatelessWidget {
                     color: const Color(0xFFECFEFF),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(Icons.calendar_check_outlined,
+                  child: const Icon(Icons.calendar_month,
                       color: Color(0xFF06B6D4), size: 22),
                 ),
                 const SizedBox(width: 12),

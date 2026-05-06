@@ -19,13 +19,14 @@ class Kos {
   });
 
   factory Kos.fromJson(Map<String, dynamic> json) => Kos(
-        id: json['id'],
+        // Perbaikan: Pakai int.tryParse karena Oracle sering kirim String
+        id: int.tryParse(json['id'].toString()) ?? 0,
         namaKos: json['nama_kos'] ?? '',
         harga: double.tryParse(json['harga'].toString()) ?? 0,
         lokasi: json['lokasi'] ?? '',
         deskripsi: json['deskripsi'],
-        galeriCount: json['galeri_count'],
-        bookingCount: json['booking_count'],
+        galeriCount: int.tryParse(json['galeri_count'].toString()),
+        bookingCount: int.tryParse(json['booking_count'].toString()),
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,7 +46,7 @@ class User {
   User({required this.id, required this.name, required this.email});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json['id'],
+        id: int.tryParse(json['id'].toString()) ?? 0, // Perbaikan
         name: json['name'] ?? '',
         email: json['email'] ?? '',
       );
@@ -74,11 +75,11 @@ class Booking {
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) => Booking(
-        id: json['id'],
-        userId: json['user_id'],
-        kosId: json['kos_id'],
+        id: int.tryParse(json['id'].toString()) ?? 0, // Perbaikan
+        userId: int.tryParse(json['user_id'].toString()) ?? 0, // Perbaikan
+        kosId: int.tryParse(json['kos_id'].toString()) ?? 0, // Perbaikan
         tanggalMasuk: json['tanggal_masuk'] ?? '',
-        durasiSewa: json['durasi_sewa'] ?? 1,
+        durasiSewa: int.tryParse(json['durasi_sewa'].toString()) ?? 1, // Perbaikan
         user: json['user'] != null ? User.fromJson(json['user']) : null,
         kos: json['kos'] != null ? Kos.fromJson(json['kos']) : null,
         pembayaran: json['pembayaran'] != null
@@ -106,8 +107,8 @@ class Pembayaran {
   });
 
   factory Pembayaran.fromJson(Map<String, dynamic> json) => Pembayaran(
-        id: json['id'],
-        bookingId: json['booking_id'],
+        id: int.tryParse(json['id'].toString()) ?? 0, // Perbaikan
+        bookingId: int.tryParse(json['booking_id'].toString()) ?? 0, // Perbaikan
         totalTagihan:
             double.tryParse(json['total_tagihan'].toString()) ?? 0,
         statusBayar: json['status_bayar'] ?? 'pending',
